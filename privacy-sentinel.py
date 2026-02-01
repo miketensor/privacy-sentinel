@@ -165,8 +165,8 @@ analyzer = AnalyzerEngine(
 anonymizer = AnonymizerEngine()
 
 # Initialisation Groq
-GROQ_API_KEY="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"
-groq_client = Groq(api_key=GROQ_API_KEY)
+api_key_from_secrets = st.secrets["GROQ_API_KEY"]
+groq_client = Groq(api_key=api_key_from_secrets)
 
 # Stockage temporaire des sessions (en prod: Redis)
 sessions: Dict[str, dict] = {}

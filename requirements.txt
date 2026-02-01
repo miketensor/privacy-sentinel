@@ -1,13 +1,8 @@
 fastapi
 uvicorn
-pydantic
 presidio-analyzer
 presidio-anonymizer
 groq
 python-dotenv
 streamlit
-requests
 spacy
-# Modèles de langue pour Spacy (indispensables pour Presidio)
-https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-3.7.0/fr_core_news_md-3.7.0-py3-none-any.whl
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl

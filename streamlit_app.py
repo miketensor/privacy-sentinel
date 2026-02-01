@@ -2,6 +2,27 @@
 import streamlit as st
 from privacy_sentinel import run_privacy_logic  # Import direct du fichier local
 
+import os
+import subprocess
+import sys
+
+# Fonction pour installer les modèles spaCy s'ils sont manquants
+def load_spacy_models():
+    models = {
+        "fr_core_news_md": "https://github.com/explosion/spacy-models/releases/download/fr_core_news_md-3.8.0/fr_core_news_md-3.8.0-py3-none-any.whl",
+        "en_core_web_sm": "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
+    }
+    for model_name, url in models.items():
+        try:
+            import spacy
+            spacy.load(model_name)
+        except (ImportError, OSError):
+            print(f"📦 Installation du modèle {model_name}...")
+            subprocess.check_call([sys.executable, "-m", "pip", "install", url])
+
+load_spacy_models()
+
+
 st.set_page_config(page_title="Privacy Sentinel Demo", page_icon="🔒")
 
 st.title("🔒 Privacy Sentinel - Demo")
