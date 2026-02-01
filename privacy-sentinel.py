@@ -40,8 +40,6 @@ from groq import Groq
 
 # load_dotenv() #charger les variables d'environnement depuis un fichier .env dans votre projet.
 
-app = FastAPI(title="Privacy Sentinel")
-
 nlp_configuration = {
     "nlp_engine_name": "spacy",
     "models": [

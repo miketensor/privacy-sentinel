@@ -1,7 +1,5 @@
 # streamlit_app.py
 import streamlit as st
-import requests
-import json
 from privacy_sentinel import run_privacy_logic  # Import direct du fichier local
 
 st.set_page_config(page_title="Privacy Sentinel Demo", page_icon="🔒")
