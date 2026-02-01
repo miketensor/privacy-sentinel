@@ -168,24 +168,6 @@ anonymizer = AnonymizerEngine()
 api_key_from_secrets = st.secrets["GROQ_API_KEY"]
 groq_client = Groq(api_key=api_key_from_secrets)
 
-# Stockage temporaire des sessions (en prod: Redis)
-sessions: Dict[str, dict] = {}
-
-class ProxyRequest(BaseModel):
-    prompt: str
-    model: str = "llama-3.3-70b-versatile"  # Modèle par défaut Groq
-    temperature: float = 0.7
-    max_tokens: int = 1024
-
-class ProxyResponse(BaseModel):
-    session_id: str
-    original_prompt: str
-    anonymized_prompt: str
-    pii_detected: List[dict]
-    llm_response: str
-    final_response: str
-
-
 def run_privacy_logic(prompt: str, model: str, temperature: float):
     session_id = str(uuid.uuid4())
     
